@@ -9,47 +9,34 @@ import java.util.ArrayList;
 public class SwerveUnit {
 	// get user rotation input 
 	public static String getInput() {
-		 BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
-     String input = null;
-	try {
-		input = reader.readLine();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		System.out.println("Invalid entry, please try again.");
-	}
-   return input;
-	}
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	    String input = null;
+		try {
+			input = reader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Invalid entry, please try again.");
+		}
+	   return input;
+		}
 	
-	// get input of desired rotations for each motor
 	public static ArrayList inputDesiredMovement() {
-		ArrayList<Double>desiredMovement = new ArrayList<Double>();
+		// get input of desired rotations for each motor
 		System.out.println("Please enter the desired rotations for stealth wheel:");
 		Double stealthWheelTurn = Double.parseDouble(getInput());
 		System.out.println("Please enter the desired angle for Swerve Assembly:");
 		Double swerveAssemblyTurn = Double.parseDouble(getInput());
 		
-		desiredMovement.add(stealthWheelTurn);
-		desiredMovement.add(swerveAssemblyTurn);
+		// do the conversions with gear ratios and degrees
+		ArrayList<Double> desiredMovement = new ArrayList<Double>();
+		ArrayList<Integer> gearsList = new gearRatios().initGears();
+		double gearBoxRatio = gearRatios.getGearboxRatio(gearsList);
+		desiredMovement = gearRatios.getFinalGearRatio(gearBoxRatio, stealthWheelTurn, swerveAssemblyTurn);
 		return desiredMovement;
 		}
 	
-	// given two values in a list, [# of input gear, # of output gear]
-	public static double getRatio(ArrayList<Double> gearRatioList) {
-		double gearRatio = gearRatioList.get(0)/gearRatioList.get(1);
-		return gearRatio;
-	}
-	
-	// store all the number of teeth per gear 
-	// calculate conversions for gear ratios
-	public static ArrayList<Double> getFinalGearRatio() {
-	// initializing each gear ratio
-		//double ratioMotorBevel1To
-	return null;
-	
-		
-	}
-	// changed the account
+	// initialize the gears and return them in a list to be used
+
 	
 	public static ArrayList getMotorMovement() {
 		double motorA;
