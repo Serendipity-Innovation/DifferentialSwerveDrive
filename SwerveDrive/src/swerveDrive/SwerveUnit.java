@@ -45,7 +45,7 @@ public class SwerveUnit {
 	public static ArrayList<Double> getFinalGearRatio() {
 	// initializing each gear ratio
 		//double ratioMotorBevel1To
-	return null
+	return null;
 	
 		
 	}
