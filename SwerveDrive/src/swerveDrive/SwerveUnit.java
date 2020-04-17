@@ -31,7 +31,9 @@ public class SwerveUnit {
 		ArrayList<Double> desiredMovement = new ArrayList<Double>();
 		ArrayList<Integer> gearsList = new gearRatios().initGears();
 		double gearBoxRatio = gearRatios.getGearboxRatio(gearsList);
+		System.out.println("the gear ratios in the gear box is " + gearBoxRatio);
 		desiredMovement = gearRatios.getFinalGearRatio(gearBoxRatio, stealthWheelTurn, swerveAssemblyTurn);
+		System.out.println("the desired Movement after gear ratio conversions are " + desiredMovement);
 		return desiredMovement;
 		}
 	

@@ -28,7 +28,7 @@ public class gearRatios {
 	
 	// given two values in a list, [# of input gear, # of output gear]
 	public static double getRatio(int inputGearTeeth, int outputGearTeeth) {
-		double gearRatio = (1.0 * inputGearTeeth)/outputGearTeeth;
+		double gearRatio = outputGearTeeth/(1.0 * inputGearTeeth);
 		return gearRatio;
 	}
 	
@@ -44,6 +44,8 @@ public class gearRatios {
 				gearBoxRatio = tempGearRatio * gearBoxRatio;
 			}	 
 		}
+		// Gear Ratios only give the outPutGearRotations using inputGearRotations as 1
+		// Instead, use the reciprocal of gearBoxRatio to find inputGearRotations based off of outputGearRotations being 1
 		return gearBoxRatio;
 	}
 	
